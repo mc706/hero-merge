@@ -1,0 +1,163 @@
+<div class="page-header">
+    <h1>Merge Superheroes</h1>
+</div>
+<div class="row">
+    <div class="col-md-5">
+        <div class="form-group">
+            <label for="heroA">Hero1</label>
+            <select name="heroA" id="heroA" class="form-control" (change)="selectA($event.target.value)">
+                <option *ngFor="let hero of heroes" [value]="hero.id">{{hero.hero_name}}</option>
+            </select>
+        </div>
+        <br>
+        <div *ngIf="heroA">
+            <hm-hero-card [hero]="heroA"></hm-hero-card>
+        </div>
+    </div>
+    <div class="col-md-2 text-center">
+        <button class="btn btn-primary" (click)="combine()">Combine!</button>
+    </div>
+    <div class="col-md-5">
+        <div class="form-group">
+            <label for="heroB">Hero2</label>
+            <select name="heroA" id="heroB" class="form-control" (change)="selectB($event.target.value)">
+                <option *ngFor="let hero of heroes" [value]="hero.id">{{hero.hero_name}}</option>
+            </select>
+        </div>
+        <br>
+        <div *ngIf="heroB">
+            <hm-hero-card [hero]="heroB"></hm-hero-card>
+        </div>
+    </div>
+
+</div>
+<div class="row" *ngIf="combined">
+    <div class="col-md-12">
+        <h3>Combined Superhero</h3>
+        <form #f="ngForm" (submit)="onSubmit($event)" class="form">
+            <div class="form-group">
+                <label for="hero_name">Hero Name</label>
+                <input class="form-control" type="text" id="hero_name" [(ngModel)]="combined.hero_name" required>
+            </div>
+            <div class="form-group">
+                <label for="real_name">Real Name</label>
+                <input class="form-control" type="text" id="real_name" [(ngModel)]="combined.real_name" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select name="gender" id="gender" [(ngModel)]="combined.gender" required class="form-control">
+                    <option></option>
+                    <option value="Female">Female</option>
+                    <option value="Male">Male</option>
+                </select>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label>Intelligence</label>
+                    <div>
+                        <label class="radio-inline">
+                            <input type="radio" name="intelligenceRadio" id="intelligence1" (click)="combined.attributes.intelligence = heroA.attributes.intelligence"> {{heroA.attributes.intelligence}}
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="intelligenceRadio" id="intelligence2" (click)="combined.attributes.intelligence = heroB.attributes.intelligence"> {{heroB.attributes.intelligence}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label>Strength</label>
+                    <div>
+                        <label class="radio-inline">
+                            <input type="radio" name="strengthRadio" id="strength1" (click)="combined.attributes.strength = heroA.attributes.strength"> {{heroA.attributes.strength}}
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="strengthRadio" id="strength2" (click)="combined.attributes.strength = heroB.attributes.strength"> {{heroB.attributes.strength}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label>Speed</label>
+                    <div>
+                        <label class="radio-inline">
+                            <input type="radio" name="speedRadio" id="speed1" (click)="combined.attributes.speed = heroA.attributes.speed"> {{heroA.attributes.speed}}
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="speedRadio" id="speed2" (click)="combined.attributes.speed = heroB.attributes.speed"> {{heroB.attributes.speed}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label>Durability</label>
+                    <div>
+                        <label class="radio-inline">
+                            <input type="radio" name="durabilityRadio" id="durability1" (click)="combined.attributes.durability = heroA.attributes.durability"> {{heroA.attributes.durability}}
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="durabilityRadio" id="durability2" (click)="combined.attributes.durability = heroB.attributes.durability"> {{heroB.attributes.durability}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label>Power</label>
+                    <div>
+                        <label class="radio-inline">
+                            <input type="radio" name="powerRadio" id="power1" (click)="combined.attributes.power = heroA.attributes.power"> {{heroA.attributes.power}}
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="powerRadio" id="power2" (click)="combined.attributes.power = heroB.attributes.power"> {{heroB.attributes.power}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label>Combat</label>
+                    <div>
+                        <label class="radio-inline">
+                            <input type="radio" name="combatRadio" id="combat1" (click)="combined.attributes.combat = heroA.attributes.combat"> {{heroA.attributes.combat}}
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="combatRadio" id="combat2" (click)="combined.attributes.combat = heroB.attributes.combat"> {{heroB.attributes.combat}}
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Powers</label>
+                <div>
+                    <span class="label label-success" *ngFor="let power of combined.powers" style="margin-right: 3px;">{{power}} <i class="cursor-pointer" (click)="removePower(index)">&#10006;</i></span>
+                </div>
+                <br>
+                <br>
+                <div>
+                    <span class="label label-default" *ngFor="let power of combined_powers" style="margin-right: 3px;"><i class="cursor-pointer" (click)="addPower(power)">+</i> {{power}} </span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Weaknesses</label>
+                <div>
+                    <span class="label label-danger" *ngFor="let weakness of combined.weaknesses" style="margin-right: 3px;">{{weakness}}</span>
+                </div>
+            </div>
+            <br>
+            <hr>
+            <div class="form-group">
+                <button type="button"
+                        [disabled]="!f.valid || !combined.weaknesses.length || !combined.powers.length || !combined.gender.length"
+                        (click)="onSubmit($event)"
+                        class="btn btn-primary pull-right">
+                    Save New SuperHero
+                </button>
+                <a class="btn pull-right" [routerLink]="['/']">Cancel</a>
+                <div class="clearfix"></div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,92 @@
+<div class="page-header">
+    <h1>Create New SuperHero</h1>
+</div>
+
+<form #f="ngForm" (submit)="onSubmit($event)" class="form">
+    <div class="form-group">
+        <label for="hero_name">Hero Name</label>
+        <input class="form-control" type="text" id="hero_name" [(ngModel)]="hero.hero_name" required>
+    </div>
+    <div class="form-group">
+        <label for="real_name">Real Name</label>
+        <input class="form-control" type="text" id="real_name" [(ngModel)]="hero.real_name" required>
+    </div>
+    <div class="form-group">
+        <label for="gender">Gender</label>
+        <select name="gender" id="gender" [(ngModel)]="hero.gender" required class="form-control">
+            <option></option>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+        </select>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label for="intelligence">Intelligence</label>
+            <input type="number" min="0" max="100" [(ngModel)]="hero.attributes.intelligence" required>
+            <input type="range" min="0" max="100" [(ngModel)]="hero.attributes.intelligence" required id="intelligence">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label for="strength">Strength</label>
+            <input type="number" min="0" max="100" [(ngModel)]="hero.attributes.strength" required>
+            <input type="range" min="0" max="100" [(ngModel)]="hero.attributes.strength" required id="strength">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label for="speed">Speed</label>
+            <input type="number" min="0" max="100" [(ngModel)]="hero.attributes.speed" required>
+            <input type="range" min="0" max="100" [(ngModel)]="hero.attributes.speed" required id="speed">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label for="durability">Durability</label>
+            <input type="number" min="0" max="100" [(ngModel)]="hero.attributes.durability" required>
+            <input type="range" min="0" max="100" [(ngModel)]="hero.attributes.durability" required id="durability">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label for="power">Power</label>
+            <input type="number" min="0" max="100" [(ngModel)]="hero.attributes.power" required>
+            <input type="range" min="0" max="100" [(ngModel)]="hero.attributes.power" required id="power">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-6">
+            <label for="combat">Combat</label>
+            <input type="number" min="0" max="100" [(ngModel)]="hero.attributes.combat" required>
+            <input type="range" min="0" max="100" [(ngModel)]="hero.attributes.combat" required id="combat">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="powers">Powers</label>
+        <div>
+            <span class="label label-success" *ngFor="let power of hero.powers" style="margin-right: 3px;">{{power}} <i class="cursor-pointer" (click)="removePower(index)">&#10006;</i></span>
+        </div>
+        <br>
+        <input type="text" [(ngModel)]="new_power" class="form-control" placeholder="Add Power" id="powers" (keyup.enter)="addPower()">
+    </div>
+    <div class="form-group">
+        <label for="weaknesses">Weaknesses</label>
+        <div>
+            <span class="label label-danger" *ngFor="let weakness of hero.weaknesses" style="margin-right: 3px;">{{weakness}} <i class="cursor-pointer" (click)="removeWeakness(index)">&#10006;</i></span>
+        </div>
+        <br>
+        <input type="text" [(ngModel)]="new_weakness" class="form-control" placeholder="Add Weakness" id="weaknesses" (keyup.enter)="addWeakness()">
+    </div>
+    <br>
+    <hr>
+    <div class="form-group">
+        <button type="button"
+                [disabled]="!f.valid || !hero.weaknesses.length || !hero.powers.length || !hero.gender.length"
+                (click)="onSubmit($event)"
+                class="btn btn-primary pull-right">
+            Create SuperHero
+        </button>
+        <a class="btn pull-right" [routerLink]="['/']">Cancel</a>
+        <div class="clearfix"></div>
+    </div>
+</form>

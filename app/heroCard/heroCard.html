@@ -1,0 +1,50 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">{{hero.hero_name}}</h3>
+    </div>
+    <div class="panel-body">
+        <dl class="dl-horizontal">
+            <dt><strong>Real Name:</strong></dt>
+            <dd>{{hero.real_name}}</dd>
+
+            <dt><strong>Gender:</strong></dt>
+            <dd>{{hero.gender}}</dd>
+
+            <dt><strong>Attributes:</strong></dt>
+            <dd>
+                <div class="clearfix"></div>
+                <div>
+                    <dl class="dl-horizontal">
+                        <dt><strong>Intelligence:</strong></dt>
+                        <dd><hm-meter [value]="hero.attributes.intelligence"></hm-meter></dd>
+
+                        <dt><strong>Strength:</strong></dt>
+                        <dd><hm-meter [value]="hero.attributes.strength"></hm-meter></dd>
+
+                        <dt><strong>Speed:</strong></dt>
+                        <dd><hm-meter [value]="hero.attributes.speed"></hm-meter></dd>
+
+                        <dt><strong>Durability:</strong></dt>
+                        <dd><hm-meter [value]="hero.attributes.durability"></hm-meter></dd>
+
+                        <dt><strong>Power:</strong></dt>
+                        <dd><hm-meter [value]="hero.attributes.power"></hm-meter></dd>
+
+                        <dt><strong>Combat:</strong></dt>
+                        <dd><hm-meter [value]="hero.attributes.combat"></hm-meter></dd>
+                    </dl>
+                </div>
+            </dd>
+
+            <dt><strong>Powers:</strong></dt>
+            <dd>
+                {{hero.powers}}
+            </dd>
+
+            <dt><strong>Weaknesses</strong></dt>
+            <dd>
+                {{hero.weaknesses}}
+            </dd>
+        </dl>
+    </div>
+</div>
