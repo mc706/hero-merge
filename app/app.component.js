@@ -22,7 +22,7 @@ var AppComponent = (function () {
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.heroService.getApiKey().subscribe(function () { return _this.router.navigate(['/']); });
+        this.heroService.getApiKey().subscribe(function () { return _this.router.navigate(['/refresh']); });
     };
     AppComponent = __decorate([
         core_1.Component({

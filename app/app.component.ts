@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
         this.heroService.getApiKey().subscribe(
-            () => this.router.navigate(['/'])
+            () => this.router.navigate(['/refresh'])
         );
     }
 }

@@ -4,6 +4,7 @@ var create_component_1 = require('./create/create.component');
 exports.APP_ROUTES = [
     { path: '/', name: 'Home', component: home_component_1.HomeComponent },
     { path: '/new', name: 'Create', component: create_component_1.CreateComponent },
-    { path: '/merge', name: 'Merge', component: merge_component_1.MergeComponent }
+    { path: '/merge', name: 'Merge', component: merge_component_1.MergeComponent },
+    { path: '/refresh', name: 'Refresh', redirectTo: ['/'] }
 ];
 //# sourceMappingURL=app.routes.js.map

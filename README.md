@@ -28,3 +28,14 @@ radio buttons.
 
 Currently the RXJS observable is not shared. To save data and keep things up to date, I would probably share the results
 so it is not refetching heroes as much.
+
+
+### Instructions on running
+
+1. `npm install`
+2. `npm install -g gulp`
+3. `gulp`
+
+This will start the webserver
+
+To bu
