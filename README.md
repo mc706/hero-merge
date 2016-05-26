@@ -17,7 +17,6 @@ around the app as a reusable component. I created a service to do all of the dat
 the API key on the initialization of the applicaiton.
 
 
-
 ### TODO
 The APIKey Fetch currently has a race condition against the initial list of heroes. I would either make that blocking call
 and have the subsequent data subscribe to it, or move the APIKey to a build time configuration so it doesnt need to be 
@@ -29,6 +28,9 @@ radio buttons.
 Currently the RXJS observable is not shared. To save data and keep things up to date, I would probably share the results
 so it is not refetching heroes as much.
 
+### Estimate of Time
+Total time was probably about 4 hours broken up into 2 sessions. A good portion of time was spent adapting code to fit
+the new RC release of Angular coming from Beta and dealing with various Angular2 bugs.
 
 ### Instructions on running
 
@@ -38,4 +40,9 @@ so it is not refetching heroes as much.
 
 This will start the webserver
 
-To bu
+To run and serve the built version run
+
+`gulp serve-build`
+
+Note do to the race condition that is not yet fixed around fetching the API Key, you may need to navigate to create and back
+to get initial list to load.
